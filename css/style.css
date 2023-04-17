@@ -109,3 +109,9 @@ textarea {
 #tab {
     width: 50px;
 }
+#capslock, #shift{
+    width: 100px;
+}
+#enter, #shift-right{
+    width: 86px;
+}
