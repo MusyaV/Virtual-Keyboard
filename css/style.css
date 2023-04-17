@@ -1,5 +1,7 @@
 body {
-    background: rgba(255, 166, 0, 0.729);
+    /* background: rgba(255, 166, 0, 0.729); */
+    /* background: rgba(229, 188, 255, 0.552); */
+    background-image: url(/foto6.jpg);
 }
 
 .centralizer {
@@ -11,29 +13,33 @@ body {
     margin: 10px auto;
     text-align: center;
     font-size: 30px;
+    font-weight: bold;
     color: rgb(2, 51, 48);
 }
 
 textarea {
     display: block;
-    width: 700px;
+    width: 718px;
     height: 200px;
     margin: 10px auto 10px;
     padding: 10px;
     font-size: 18px;
     color: #444444;
+    border-radius: 15px;
     overflow: auto;
+    border: 6px solid rgba(0, 0, 0, 0.764);
 }
 
 .keyboard-body {
-    width: 704px;
+    width: 730px;
     margin: 0 auto;
     padding: 5px;
     padding-left: 0;
     padding-bottom: 0;
-    background: #f9ff90;
-    border: 3px solid #222222;
+    background: #a9b9c8;
+    border: 6px solid white;
     border-radius: 5px;
+    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.3);
 }
 
 .keyboard-row {
@@ -56,11 +62,12 @@ textarea {
     border-radius: 3px;
     cursor: pointer;
     user-select: none;
+    border: 0.5px solid white;
     transition: border-radius 0.3s, background-color 0.3s;
 }
 
 .keyboard-key:hover {
-    background: rgba(105, 90, 205, 0.563);
+    background: #ffdcc8;
 
 }
 
@@ -88,17 +95,19 @@ textarea {
 }
 
 .green {
+    width: 40px;
     font-weight: 600;
     background-color: #222222;
 }
 
 .green:hover {
-    background: rgb(172, 191, 27);
+    background: #ff9599;
 }
 
 .description {
     margin: 10px auto;
     text-align: center;
+
 }
 
 .language {
@@ -109,9 +118,26 @@ textarea {
 #tab {
     width: 50px;
 }
-#capslock, #shift{
+
+#capslock,
+#shift {
     width: 100px;
 }
-#enter, #shift-right{
+
+#enter,
+#shift-right {
     width: 86px;
+}
+#space{
+    width: 330px;
+}
+#text{
+    background-color: white;
+    width: 730px;
+    margin: 0px auto;
+    margin-top: 15px;
+    padding: 2px;
+    border-radius: 10px;
+    border: 3px solid #444444de;
+    
 }
