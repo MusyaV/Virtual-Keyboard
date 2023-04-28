@@ -2,51 +2,42 @@ let arrRusKeys = document.querySelectorAll(".rus");
 let arrEngKeys = document.querySelectorAll(".eng");
 let arrEngSpans = document.querySelectorAll(".eng > span");
 let arrRusSpans = document.querySelectorAll(".rus > span");
+let arrKeyboardKey = document.querySelectorAll(".keyboard-key");
 
 document.addEventListener("keydown", function (e) {
+  let codeCurrent = e.code;
+  for (let i = 0; i < arrKeyboardKey.length; i++) {
+    if (arrKeyboardKey[i].id == e.code) {
+      arrKeyboardKey[i].style.background = "#ffdcc8";
+      arrKeyboardKey[i].style.transform = "5s";
+      console.log("ono");
+    }
+  }
+  console.log(codeCurrent);
   if (e.code == "CapsLock") {
     for (let i = 0; i < arrEngKeys.length; i++) {
       if (arrEngKeys[i].className == "eng") {
-        if (arrEngKeys[i].children[1].className == 'caseUp hidden') {
-            arrEngKeys[i].children[1].classList.remove('hidden')
-            arrEngKeys[i].children[0].classList.add('hidden')
-            // arrEngKeys[i].children[2].classList.add('hidden')
-            // arrEngKeys[i].children[3].classList.add('hidden')
-        }else{
-            arrEngKeys[i].children[0].classList.remove('hidden')
-            arrEngKeys[i].children[1].classList.add('hidden')
-            // arrEngKeys[i].children[2].classList.add('hidden')
-            // arrEngKeys[i].children[3].classList.add('hidden')
+        if (arrEngKeys[i].children[1].className == "caseUp hidden") {
+          arrEngKeys[i].children[1].classList.remove("hidden");
+          arrEngKeys[i].children[0].classList.add("hidden");
+        } else {
+          arrEngKeys[i].children[0].classList.remove("hidden");
+          arrEngKeys[i].children[1].classList.add("hidden");
         }
       }
     }
     for (let i = 0; i < arrRusKeys.length; i++) {
       if (arrRusKeys[i].className == "rus") {
-        if (arrRusKeys[i].children[1].className == 'caseUp hidden') {
-            arrRusKeys[i].children[1].classList.remove('hidden')
-            arrRusKeys[i].children[0].classList.add('hidden')
-            // arrRusKeys[i].children[2].classList.add('hidden')
-            // arrRusKeys[i].children[3].classList.add('hidden')
-        }else{
-            arrRusKeys[i].children[0].classList.remove('hidden')
-            arrRusKeys[i].children[1].classList.add('hidden')
-            // arrRusKeys[i].children[2].classList.add('hidden')
-            // arrRusKeys[i].children[3].classList.add('hidden')
+        if (arrRusKeys[i].children[1].className == "caseUp hidden") {
+          arrRusKeys[i].children[1].classList.remove("hidden");
+          arrRusKeys[i].children[0].classList.add("hidden");
+        } else {
+          arrRusKeys[i].children[0].classList.remove("hidden");
+          arrRusKeys[i].children[1].classList.add("hidden");
         }
       }
     }
-    // for (let i = 0; i < arrRusKeys.length; i++) {
-    //   if (arrEngKeys[i].className == "rus") {
-    //     console.log("da рус");
-    //   }else{
-    //     console.log("net рус");
-    //   }
-    // }
-
-    
   }
-
-  //   console.log(e.which);
 });
 
 // функция отслеживания двойного клика

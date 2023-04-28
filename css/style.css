@@ -37,7 +37,7 @@ textarea {
     background: #a9b9c8;
     border: 6px solid white;
     border-radius: 5px;
-    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.3);
+    box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.3);
 }
 
 .keyboard-row {
@@ -126,10 +126,12 @@ textarea {
 #Shift-right {
     width: 86px;
 }
-#Space{
+
+#Space {
     width: 330px;
 }
-#text{
+
+#text {
     background-color: white;
     width: 712px;
     margin: 0px auto;
@@ -137,5 +139,5 @@ textarea {
     padding: 2px;
     border-radius: 10px;
     border: 3px solid #444444de;
-    
+
 }
