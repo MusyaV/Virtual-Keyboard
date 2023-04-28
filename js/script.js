@@ -1,10 +1,7 @@
 document.addEventListener("keydown", function (e) {
-  // if (e.key == 'Alt' && e.key == 'Shift') {
-  //     console.log('смена языка')
-  // }
-
-  console.log(e);
+  //   console.log(e.which);
 });
+
 // функция отслеживания двойного клика
 function runOnKeys(func, ...codes) {
   let pressed = new Set();
@@ -22,7 +19,23 @@ function runOnKeys(func, ...codes) {
     pressed.delete(event.code);
   });
 }
+let arrRusKeys = document.querySelectorAll(".rus");
+let arrEngKeys = document.querySelectorAll(".eng");
+
 function changeLang() {
-    console.log('privet')
+  for (let i = 0; i < arrEngKeys.length; i++) {
+    if (arrEngKeys[i].className == "eng") {
+      arrEngKeys[i].classList.toggle("hidden");
+      arrEngKeys[i].children[0].classList.toggle("hidden");
+      arrRusKeys[i].classList.toggle("hidden");
+      arrRusKeys[i].children[0].classList.toggle("hidden");
+    } else {
+      arrEngKeys[i].classList.toggle("hidden");
+      arrEngKeys[i].children[0].classList.toggle("hidden");
+      arrRusKeys[i].classList.toggle("hidden");
+      arrRusKeys[i].children[0].classList.toggle("hidden");
+    }
+  }
 }
 runOnKeys(() => changeLang(), "ShiftLeft", "AltLeft");
+let capsLock = document.querySelector()
