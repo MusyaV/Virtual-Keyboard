@@ -3,17 +3,32 @@ let arrEngKeys = document.querySelectorAll(".eng");
 let arrEngSpans = document.querySelectorAll(".eng > span");
 let arrRusSpans = document.querySelectorAll(".rus > span");
 let arrKeyboardKey = document.querySelectorAll(".keyboard-key");
+let arrKeyboardKeyGreen = document.querySelectorAll(".green");
+
+document.addEventListener("keyup", function (e) {
+     for (let i = 0; i < arrKeyboardKey.length; i++) {
+      if (arrKeyboardKey[i].id == e.code) {
+        arrKeyboardKey[i].style.background = "#444444de";
+        arrKeyboardKey[i].style.transform = "5s";
+      }
+    }
+     for (let i = 0; i < arrKeyboardKeyGreen.length; i++) {
+      if (arrKeyboardKeyGreen[i].id == e.code) {
+        arrKeyboardKeyGreen[i].style.background = " #222222";
+        arrKeyboardKeyGreen[i].style.transform = "5s";
+      }
+    }
+})
 
 document.addEventListener("keydown", function (e) {
-  let codeCurrent = e.code;
-  for (let i = 0; i < arrKeyboardKey.length; i++) {
+    console.log(e.code)
+    for (let i = 0; i < arrKeyboardKey.length; i++) {
     if (arrKeyboardKey[i].id == e.code) {
       arrKeyboardKey[i].style.background = "#ffdcc8";
       arrKeyboardKey[i].style.transform = "5s";
-      console.log("ono");
     }
   }
-  console.log(codeCurrent);
+
   if (e.code == "CapsLock") {
     for (let i = 0; i < arrEngKeys.length; i++) {
       if (arrEngKeys[i].className == "eng") {

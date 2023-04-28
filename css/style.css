@@ -117,13 +117,13 @@ textarea {
     width: 50px;
 }
 
-#Capslock,
-#Shift {
+#CapsLock,
+#ShiftLeft {
     width: 100px;
 }
 
 #Enter,
-#Shift-right {
+#ShiftRight {
     width: 86px;
 }
 
