@@ -1,4 +1,51 @@
+let arrRusKeys = document.querySelectorAll(".rus");
+let arrEngKeys = document.querySelectorAll(".eng");
+let arrEngSpans = document.querySelectorAll(".eng > span");
+let arrRusSpans = document.querySelectorAll(".rus > span");
+
 document.addEventListener("keydown", function (e) {
+  if (e.code == "CapsLock") {
+    for (let i = 0; i < arrEngKeys.length; i++) {
+      if (arrEngKeys[i].className == "eng") {
+        if (arrEngKeys[i].children[1].className == 'caseUp hidden') {
+            arrEngKeys[i].children[1].classList.remove('hidden')
+            arrEngKeys[i].children[0].classList.add('hidden')
+            // arrEngKeys[i].children[2].classList.add('hidden')
+            // arrEngKeys[i].children[3].classList.add('hidden')
+        }else{
+            arrEngKeys[i].children[0].classList.remove('hidden')
+            arrEngKeys[i].children[1].classList.add('hidden')
+            // arrEngKeys[i].children[2].classList.add('hidden')
+            // arrEngKeys[i].children[3].classList.add('hidden')
+        }
+      }
+    }
+    for (let i = 0; i < arrRusKeys.length; i++) {
+      if (arrRusKeys[i].className == "rus") {
+        if (arrRusKeys[i].children[1].className == 'caseUp hidden') {
+            arrRusKeys[i].children[1].classList.remove('hidden')
+            arrRusKeys[i].children[0].classList.add('hidden')
+            // arrRusKeys[i].children[2].classList.add('hidden')
+            // arrRusKeys[i].children[3].classList.add('hidden')
+        }else{
+            arrRusKeys[i].children[0].classList.remove('hidden')
+            arrRusKeys[i].children[1].classList.add('hidden')
+            // arrRusKeys[i].children[2].classList.add('hidden')
+            // arrRusKeys[i].children[3].classList.add('hidden')
+        }
+      }
+    }
+    // for (let i = 0; i < arrRusKeys.length; i++) {
+    //   if (arrEngKeys[i].className == "rus") {
+    //     console.log("da рус");
+    //   }else{
+    //     console.log("net рус");
+    //   }
+    // }
+
+    
+  }
+
   //   console.log(e.which);
 });
 
@@ -19,8 +66,6 @@ function runOnKeys(func, ...codes) {
     pressed.delete(event.code);
   });
 }
-let arrRusKeys = document.querySelectorAll(".rus");
-let arrEngKeys = document.querySelectorAll(".eng");
 
 function changeLang() {
   for (let i = 0; i < arrEngKeys.length; i++) {
@@ -38,4 +83,3 @@ function changeLang() {
   }
 }
 runOnKeys(() => changeLang(), "ShiftLeft", "AltLeft");
-let capsLock = document.querySelector()
