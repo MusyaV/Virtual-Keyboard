@@ -1,10 +1,15 @@
 let arrRusKeys = document.querySelectorAll(".rus");
+// let body = document.querySelector("body");
 let arrEngKeys = document.querySelectorAll(".eng");
 let arrEngSpans = document.querySelectorAll(".eng > span");
 let arrRusSpans = document.querySelectorAll(".rus > span");
 let arrKeyboardKey = document.querySelectorAll(".keyboard-key");
 let arrKeyboardKeyGreen = document.querySelectorAll(".green");
 let textaria = document.querySelector(".textarea");
+
+// window.addEventListener("load", () => {
+//   document.body.innerHTML = pageHTML;
+// });
 
 document.addEventListener("keyup", function (e) {
   for (let i = 0; i < arrKeyboardKey.length; i++) {
@@ -24,36 +29,36 @@ document.addEventListener("keyup", function (e) {
 for (let i = 0; i < arrKeyboardKey.length; i++) {
   arrKeyboardKey[i].addEventListener("click", (e) => {
     if (arrKeyboardKey[i].className == "keyboard-key") {
-        textaria.innerHTML += e.target.innerText;
-     }
-     if (arrKeyboardKey[i].id == "Backspace") {
-        textaria.value=textaria.value.replace(/.$/, "")
-     }
-     if (arrKeyboardKey[i].id == "CapsLock") {
-        for (let i = 0; i < arrEngKeys.length; i++) {
-            if (arrEngKeys[i].className == "eng") {
-              if (arrEngKeys[i].children[2].className == "caps hidden") {
-                arrEngKeys[i].children[2].classList.remove("hidden");
-                arrEngKeys[i].children[0].classList.add("hidden");
-              } else {
-                arrEngKeys[i].children[0].classList.remove("hidden");
-                arrEngKeys[i].children[2].classList.add("hidden");
-              }
-            }
+      textaria.innerHTML += e.target.innerText;
+    }
+    if (arrKeyboardKey[i].id == "Backspace") {
+      textaria.value = textaria.value.replace(/.$/, "");
+    }
+    if (arrKeyboardKey[i].id == "CapsLock") {
+      for (let i = 0; i < arrEngKeys.length; i++) {
+        if (arrEngKeys[i].className == "eng") {
+          if (arrEngKeys[i].children[2].className == "caps hidden") {
+            arrEngKeys[i].children[2].classList.remove("hidden");
+            arrEngKeys[i].children[0].classList.add("hidden");
+          } else {
+            arrEngKeys[i].children[0].classList.remove("hidden");
+            arrEngKeys[i].children[2].classList.add("hidden");
           }
-          for (let i = 0; i < arrRusKeys.length; i++) {
-            if (arrRusKeys[i].className == "rus") {
-              if (arrRusKeys[i].children[2].className == "caps hidden") {
-                arrRusKeys[i].children[2].classList.remove("hidden");
-                arrRusKeys[i].children[0].classList.add("hidden");
-                console.log(e);
-              } else {
-                arrRusKeys[i].children[0].classList.remove("hidden");
-                arrRusKeys[i].children[2].classList.add("hidden");
-              }
-            }
+        }
+      }
+      for (let i = 0; i < arrRusKeys.length; i++) {
+        if (arrRusKeys[i].className == "rus") {
+          if (arrRusKeys[i].children[2].className == "caps hidden") {
+            arrRusKeys[i].children[2].classList.remove("hidden");
+            arrRusKeys[i].children[0].classList.add("hidden");
+            console.log(e);
+          } else {
+            arrRusKeys[i].children[0].classList.remove("hidden");
+            arrRusKeys[i].children[2].classList.add("hidden");
           }
-     }
+        }
+      }
+    }
   });
 }
 document.addEventListener("keydown", function (e) {
@@ -157,3 +162,4 @@ function changeLang() {
   }
 }
 runOnKeys(() => changeLang(), "ShiftLeft", "AltLeft");
+
