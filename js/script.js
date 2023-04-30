@@ -3,12 +3,10 @@ window.addEventListener("load", () => {
 
   let arrRusKeys = document.querySelectorAll(".rus");
   let arrEngKeys = document.querySelectorAll(".eng");
-  let arrEngSpans = document.querySelectorAll(".eng > span");
-  let arrRusSpans = document.querySelectorAll(".rus > span");
   let arrKeyboardKey = document.querySelectorAll(".keyboard-key");
   let arrKeyboardKeyGreen = document.querySelectorAll(".green");
   let textaria = document.querySelector(".textarea");
-  
+
   document.addEventListener("keyup", function (e) {
     for (let i = 0; i < arrKeyboardKey.length; i++) {
       if (arrKeyboardKey[i].id == e.code) {
@@ -23,7 +21,7 @@ window.addEventListener("load", () => {
       }
     }
   });
-  
+
   for (let i = 0; i < arrKeyboardKey.length; i++) {
     arrKeyboardKey[i].addEventListener("click", (e) => {
       if (arrKeyboardKey[i].className == "keyboard-key") {
@@ -31,6 +29,26 @@ window.addEventListener("load", () => {
       }
       if (arrKeyboardKey[i].id == "Backspace") {
         textaria.value = textaria.value.replace(/.$/, "");
+      }
+      if (arrKeyboardKey[i].id == "Enter") {
+        console.log(textaria.value);
+        textaria.value =
+          textaria.value.substring(0, textaria.selectionStart) +
+          "\n" +
+          textaria.value.substring(
+            textaria.selectionEnd,
+            textaria.value.length
+          );
+      }
+      if (arrKeyboardKey[i].id == "Space") {
+        console.log(textaria.value);
+        textaria.value =
+          textaria.value.substring(0, textaria.selectionStart) +
+          " " +
+          textaria.value.substring(
+            textaria.selectionEnd,
+            textaria.value.length
+          );
       }
       if (arrKeyboardKey[i].id == "CapsLock") {
         for (let i = 0; i < arrEngKeys.length; i++) {
@@ -69,12 +87,14 @@ window.addEventListener("load", () => {
             if (
               arrKeyboardKey[i].children[0].children[0].className == "caseDown"
             ) {
-              let newSymbol = arrKeyboardKey[i].children[0].children[0].innerHTML;
+              let newSymbol =
+                arrKeyboardKey[i].children[0].children[0].innerHTML;
               textaria.innerHTML += newSymbol;
               console.log(newSymbol);
             }
             if (arrKeyboardKey[i].children[0].children[2].className == "caps") {
-              let newSymbol = arrKeyboardKey[i].children[0].children[2].innerHTML;
+              let newSymbol =
+                arrKeyboardKey[i].children[0].children[2].innerHTML;
               textaria.innerHTML += newSymbol;
               console.log(newSymbol);
             }
@@ -83,12 +103,14 @@ window.addEventListener("load", () => {
             if (
               arrKeyboardKey[i].children[1].children[0].className == "caseDown"
             ) {
-              let newSymbol = arrKeyboardKey[i].children[1].children[0].innerHTML;
+              let newSymbol =
+                arrKeyboardKey[i].children[1].children[0].innerHTML;
               textaria.innerHTML += newSymbol;
               console.log(newSymbol);
             }
             if (arrKeyboardKey[i].children[1].children[2].className == "caps") {
-              let newSymbol = arrKeyboardKey[i].children[1].children[2].innerHTML;
+              let newSymbol =
+                arrKeyboardKey[i].children[1].children[2].innerHTML;
               textaria.innerHTML += newSymbol;
               console.log(newSymbol);
             }
@@ -96,7 +118,7 @@ window.addEventListener("load", () => {
         }
       }
     }
-  
+
     if (e.code == "CapsLock") {
       for (let i = 0; i < arrEngKeys.length; i++) {
         if (arrEngKeys[i].className == "eng") {
@@ -123,7 +145,7 @@ window.addEventListener("load", () => {
       }
     }
   });
-  
+
   // функция отслеживания двойного клика
   function runOnKeys(func, ...codes) {
     let pressed = new Set();
@@ -141,7 +163,7 @@ window.addEventListener("load", () => {
       pressed.delete(event.code);
     });
   }
-  
+
   function changeLang() {
     for (let i = 0; i < arrEngKeys.length; i++) {
       if (arrEngKeys[i].className == "eng") {
@@ -159,8 +181,6 @@ window.addEventListener("load", () => {
   }
   runOnKeys(() => changeLang(), "ShiftLeft", "AltLeft");
 });
-
-
 
 let pageHTML = `
 <div class="centralizer">
