@@ -29,7 +29,31 @@ for (let i = 0; i < arrKeyboardKey.length; i++) {
      if (arrKeyboardKey[i].id == "Backspace") {
         textaria.value=textaria.value.replace(/.$/, "")
      }
-
+     if (arrKeyboardKey[i].id == "CapsLock") {
+        for (let i = 0; i < arrEngKeys.length; i++) {
+            if (arrEngKeys[i].className == "eng") {
+              if (arrEngKeys[i].children[2].className == "caps hidden") {
+                arrEngKeys[i].children[2].classList.remove("hidden");
+                arrEngKeys[i].children[0].classList.add("hidden");
+              } else {
+                arrEngKeys[i].children[0].classList.remove("hidden");
+                arrEngKeys[i].children[2].classList.add("hidden");
+              }
+            }
+          }
+          for (let i = 0; i < arrRusKeys.length; i++) {
+            if (arrRusKeys[i].className == "rus") {
+              if (arrRusKeys[i].children[2].className == "caps hidden") {
+                arrRusKeys[i].children[2].classList.remove("hidden");
+                arrRusKeys[i].children[0].classList.add("hidden");
+                console.log(e);
+              } else {
+                arrRusKeys[i].children[0].classList.remove("hidden");
+                arrRusKeys[i].children[2].classList.add("hidden");
+              }
+            }
+          }
+     }
   });
 }
 document.addEventListener("keydown", function (e) {
