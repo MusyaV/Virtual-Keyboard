@@ -6,49 +6,69 @@ let arrKeyboardKey = document.querySelectorAll(".keyboard-key");
 let arrKeyboardKeyGreen = document.querySelectorAll(".green");
 
 document.addEventListener("keyup", function (e) {
-     for (let i = 0; i < arrKeyboardKey.length; i++) {
-      if (arrKeyboardKey[i].id == e.code) {
-        arrKeyboardKey[i].style.background = "#444444de";
-        arrKeyboardKey[i].style.transform = "5s";
-      }
+  for (let i = 0; i < arrKeyboardKey.length; i++) {
+    if (arrKeyboardKey[i].id == e.code) {
+      arrKeyboardKey[i].style.background = "#444444de";
+      arrKeyboardKey[i].style.transform = "5s";
     }
-     for (let i = 0; i < arrKeyboardKeyGreen.length; i++) {
-      if (arrKeyboardKeyGreen[i].id == e.code) {
-        arrKeyboardKeyGreen[i].style.background = " #222222";
-        arrKeyboardKeyGreen[i].style.transform = "5s";
-      }
+  }
+  for (let i = 0; i < arrKeyboardKeyGreen.length; i++) {
+    if (arrKeyboardKeyGreen[i].id == e.code) {
+      arrKeyboardKeyGreen[i].style.background = " #222222";
+      arrKeyboardKeyGreen[i].style.transform = "5s";
     }
-})
+  }
+});
 
 document.addEventListener("keydown", function (e) {
-    console.log(e.code)
-    for (let i = 0; i < arrKeyboardKey.length; i++) {
+  for (let i = 0; i < arrKeyboardKey.length; i++) {
     if (arrKeyboardKey[i].id == e.code) {
       arrKeyboardKey[i].style.background = "#ffdcc8";
       arrKeyboardKey[i].style.transform = "5s";
+      if (arrKeyboardKey[i].children[0].className == "rus") {
+        if (arrKeyboardKey[i].children[0].children[0].className == "caseDown") {
+          let newSymbol = arrKeyboardKey[i].children[0].children[0].innerHTML;
+          console.log(newSymbol);
+        }
+        if (arrKeyboardKey[i].children[0].children[2].className == "caps") {
+          let newSymbol = arrKeyboardKey[i].children[0].children[2].innerHTML;
+          console.log(newSymbol);
+        }
+      }
+      if (arrKeyboardKey[i].children[1].className == "eng") {
+        if (arrKeyboardKey[i].children[1].children[0].className == "caseDown") {
+          let newSymbol = arrKeyboardKey[i].children[1].children[0].innerHTML;
+          console.log(newSymbol);
+        }
+        if (arrKeyboardKey[i].children[1].children[2].className == "caps") {
+          let newSymbol = arrKeyboardKey[i].children[1].children[2].innerHTML;
+          console.log(newSymbol);
+        }
+      }
     }
   }
 
   if (e.code == "CapsLock") {
     for (let i = 0; i < arrEngKeys.length; i++) {
       if (arrEngKeys[i].className == "eng") {
-        if (arrEngKeys[i].children[1].className == "caseUp hidden") {
-          arrEngKeys[i].children[1].classList.remove("hidden");
+        if (arrEngKeys[i].children[2].className == "caps hidden") {
+          arrEngKeys[i].children[2].classList.remove("hidden");
           arrEngKeys[i].children[0].classList.add("hidden");
         } else {
           arrEngKeys[i].children[0].classList.remove("hidden");
-          arrEngKeys[i].children[1].classList.add("hidden");
+          arrEngKeys[i].children[2].classList.add("hidden");
         }
       }
     }
     for (let i = 0; i < arrRusKeys.length; i++) {
       if (arrRusKeys[i].className == "rus") {
-        if (arrRusKeys[i].children[1].className == "caseUp hidden") {
-          arrRusKeys[i].children[1].classList.remove("hidden");
+        if (arrRusKeys[i].children[2].className == "caps hidden") {
+          arrRusKeys[i].children[2].classList.remove("hidden");
           arrRusKeys[i].children[0].classList.add("hidden");
+          console.log(e);
         } else {
           arrRusKeys[i].children[0].classList.remove("hidden");
-          arrRusKeys[i].children[1].classList.add("hidden");
+          arrRusKeys[i].children[2].classList.add("hidden");
         }
       }
     }
@@ -80,11 +100,13 @@ function changeLang() {
       arrEngKeys[i].children[0].classList.toggle("hidden");
       arrRusKeys[i].classList.toggle("hidden");
       arrRusKeys[i].children[0].classList.toggle("hidden");
+      //   addSymbol();
     } else {
       arrEngKeys[i].classList.toggle("hidden");
       arrEngKeys[i].children[0].classList.toggle("hidden");
       arrRusKeys[i].classList.toggle("hidden");
       arrRusKeys[i].children[0].classList.toggle("hidden");
+      //   addSymbol(e);
     }
   }
 }
