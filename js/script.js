@@ -4,6 +4,7 @@ let arrEngSpans = document.querySelectorAll(".eng > span");
 let arrRusSpans = document.querySelectorAll(".rus > span");
 let arrKeyboardKey = document.querySelectorAll(".keyboard-key");
 let arrKeyboardKeyGreen = document.querySelectorAll(".green");
+let textaria = document.querySelector(".textarea");
 
 document.addEventListener("keyup", function (e) {
   for (let i = 0; i < arrKeyboardKey.length; i++) {
@@ -25,24 +26,34 @@ document.addEventListener("keydown", function (e) {
     if (arrKeyboardKey[i].id == e.code) {
       arrKeyboardKey[i].style.background = "#ffdcc8";
       arrKeyboardKey[i].style.transform = "5s";
-      if (arrKeyboardKey[i].children[0].className == "rus") {
-        if (arrKeyboardKey[i].children[0].children[0].className == "caseDown") {
-          let newSymbol = arrKeyboardKey[i].children[0].children[0].innerHTML;
-          console.log(newSymbol);
+      if (arrKeyboardKey[i].className == "keyboard-key") {
+        if (arrKeyboardKey[i].children[0].className == "rus") {
+          if (
+            arrKeyboardKey[i].children[0].children[0].className == "caseDown"
+          ) {
+            let newSymbol = arrKeyboardKey[i].children[0].children[0].innerHTML;
+            textaria.innerHTML += newSymbol;
+            console.log(newSymbol);
+          }
+          if (arrKeyboardKey[i].children[0].children[2].className == "caps") {
+            let newSymbol = arrKeyboardKey[i].children[0].children[2].innerHTML;
+            textaria.innerHTML += newSymbol;
+            console.log(newSymbol);
+          }
         }
-        if (arrKeyboardKey[i].children[0].children[2].className == "caps") {
-          let newSymbol = arrKeyboardKey[i].children[0].children[2].innerHTML;
-          console.log(newSymbol);
-        }
-      }
-      if (arrKeyboardKey[i].children[1].className == "eng") {
-        if (arrKeyboardKey[i].children[1].children[0].className == "caseDown") {
-          let newSymbol = arrKeyboardKey[i].children[1].children[0].innerHTML;
-          console.log(newSymbol);
-        }
-        if (arrKeyboardKey[i].children[1].children[2].className == "caps") {
-          let newSymbol = arrKeyboardKey[i].children[1].children[2].innerHTML;
-          console.log(newSymbol);
+        if (arrKeyboardKey[i].children[1].className == "eng") {
+          if (
+            arrKeyboardKey[i].children[1].children[0].className == "caseDown"
+          ) {
+            let newSymbol = arrKeyboardKey[i].children[1].children[0].innerHTML;
+            textaria.innerHTML += newSymbol;
+            console.log(newSymbol);
+          }
+          if (arrKeyboardKey[i].children[1].children[2].className == "caps") {
+            let newSymbol = arrKeyboardKey[i].children[1].children[2].innerHTML;
+            textaria.innerHTML += newSymbol;
+            console.log(newSymbol);
+          }
         }
       }
     }
