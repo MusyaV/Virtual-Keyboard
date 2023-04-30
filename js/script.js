@@ -24,10 +24,12 @@ document.addEventListener("keyup", function (e) {
 for (let i = 0; i < arrKeyboardKey.length; i++) {
   arrKeyboardKey[i].addEventListener("click", (e) => {
     if (arrKeyboardKey[i].className == "keyboard-key") {
-        
         textaria.innerHTML += e.target.innerText;
-        console.log(typeof(textaria))
-    }
+     }
+     if (arrKeyboardKey[i].id == "Backspace") {
+        textaria.value=textaria.value.replace(/.$/, "")
+     }
+
   });
 }
 document.addEventListener("keydown", function (e) {
