@@ -6,7 +6,13 @@ window.addEventListener("load", () => {
   let arrKeyboardKey = document.querySelectorAll(".keyboard-key");
   let arrKeyboardKeyGreen = document.querySelectorAll(".green");
   let textaria = document.querySelector(".textarea");
-
+//   function del() {
+//     let str = textaria.value;
+//     str =
+//       str.slice(0, textaria.value[textaria.selectionStart] - 1) +
+//       str.slice(textaria.value[textaria.selectionStart]);
+//     textaria.value = str;
+//   }
   document.addEventListener("keyup", function (e) {
     for (let i = 0; i < arrKeyboardKey.length; i++) {
       if (arrKeyboardKey[i].id == e.code) {
@@ -50,6 +56,7 @@ window.addEventListener("load", () => {
             textaria.value.length
           );
       }
+
       if (arrKeyboardKey[i].id == "CapsLock") {
         for (let i = 0; i < arrEngKeys.length; i++) {
           if (arrEngKeys[i].className == "eng") {
