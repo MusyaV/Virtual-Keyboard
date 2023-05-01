@@ -6,13 +6,8 @@ window.addEventListener("load", () => {
   let arrKeyboardKey = document.querySelectorAll(".keyboard-key");
   let arrKeyboardKeyGreen = document.querySelectorAll(".green");
   let textaria = document.querySelector(".textarea");
-  //   function del() {
-  //     let str = textaria.value;
-  //     str =
-  //       str.slice(0, textaria.value[textaria.selectionStart] - 1) +
-  //       str.slice(textaria.value[textaria.selectionStart]);
-  //     textaria.value = str;
-  //   }
+
+  //   функция для backspace
   document.querySelector("#Backspace").addEventListener("click", () => {
     if (textaria.selectionStart == 0) {
       textaria.innerHTML = textaria.value.substring(
@@ -20,27 +15,60 @@ window.addEventListener("load", () => {
         textaria.value.length - 1
       );
     } else {
-      console.log(textaria.selectionStart);
       textaria.innerHTML =
-      textaria.value.slice(0, textaria.value[textaria.selectionStart-1] - 1) +
-      textaria.value.slice(textaria.value[textaria.selectionStart-1]);
+        textaria.value.slice(0, textaria.selectionStart - 1) +
+        textaria.value.slice(textaria.selectionStart, textaria.value.length);
     }
   });
+  //   функция для delete
+  document.querySelector("#Delete").addEventListener("click", () => {
+    console.log(
+      textaria.value.slice(0, textaria.selectionStart) +
+        textaria.value.slice(textaria.selectionStart + 1, textaria.value.length)
+    );
+    textaria.innerHTML =
+      textaria.value.slice(0, textaria.selectionStart) +
+      textaria.value.slice(textaria.selectionStart + 1, textaria.value.length);
+  });
+  //   функция для Enter
+  document.querySelector("#Enter").addEventListener("click", () => {
+    textaria.innerHTML =
+      textaria.value.substring(0, textaria.selectionStart) +
+      "\n" +
+      textaria.value.substring(textaria.selectionEnd, textaria.value.length);
+  });
+  //   функция для CapsLock
+  document.querySelector("#CapsLock").addEventListener("click", () => {
+    for (let i = 0; i < arrEngKeys.length; i++) {
+      if (arrEngKeys[i].className == "eng") {
+        if (arrEngKeys[i].children[2].className == "caps hidden") {
+          arrEngKeys[i].children[2].classList.remove("hidden");
+          arrEngKeys[i].children[0].classList.add("hidden");
+        } else {
+          arrEngKeys[i].children[0].classList.remove("hidden");
+          arrEngKeys[i].children[2].classList.add("hidden");
+        }
+      }
+    }
+    for (let i = 0; i < arrRusKeys.length; i++) {
+      if (arrRusKeys[i].className == "rus") {
+        if (arrRusKeys[i].children[2].className == "caps hidden") {
+          arrRusKeys[i].children[2].classList.remove("hidden");
+          arrRusKeys[i].children[0].classList.add("hidden");
+          console.log(e);
+        } else {
+          arrRusKeys[i].children[0].classList.remove("hidden");
+          arrRusKeys[i].children[2].classList.add("hidden");
+        }
+      }
+    }
+  });
+  //   клик на все кнопки
   for (let i = 0; i < arrKeyboardKey.length; i++) {
     arrKeyboardKey[i].addEventListener("click", (e) => {
       if (arrKeyboardKey[i].className == "keyboard-key") {
         textaria.innerHTML += e.target.innerText;
         console.log(e);
-      }
-      if (arrKeyboardKey[i].id == "Enter") {
-        console.log(textaria.value);
-        textaria.value =
-          textaria.value.substring(0, textaria.selectionStart) +
-          "\n" +
-          textaria.value.substring(
-            textaria.selectionEnd,
-            textaria.value.length
-          );
       }
       if (arrKeyboardKey[i].id == "Space") {
         textaria.value =
@@ -50,34 +78,6 @@ window.addEventListener("load", () => {
             textaria.selectionEnd,
             textaria.value.length
           );
-      }
-      if (arrKeyboardKey[i].id == "Delete") {
-        console.log(textaria.selectionStart);
-      }
-      if (arrKeyboardKey[i].id == "CapsLock") {
-        for (let i = 0; i < arrEngKeys.length; i++) {
-          if (arrEngKeys[i].className == "eng") {
-            if (arrEngKeys[i].children[2].className == "caps hidden") {
-              arrEngKeys[i].children[2].classList.remove("hidden");
-              arrEngKeys[i].children[0].classList.add("hidden");
-            } else {
-              arrEngKeys[i].children[0].classList.remove("hidden");
-              arrEngKeys[i].children[2].classList.add("hidden");
-            }
-          }
-        }
-        for (let i = 0; i < arrRusKeys.length; i++) {
-          if (arrRusKeys[i].className == "rus") {
-            if (arrRusKeys[i].children[2].className == "caps hidden") {
-              arrRusKeys[i].children[2].classList.remove("hidden");
-              arrRusKeys[i].children[0].classList.add("hidden");
-              console.log(e);
-            } else {
-              arrRusKeys[i].children[0].classList.remove("hidden");
-              arrRusKeys[i].children[2].classList.add("hidden");
-            }
-          }
-        }
       }
     });
   }
@@ -151,74 +151,6 @@ window.addEventListener("load", () => {
     }
   }
   document.addEventListener("keydown", keyDown);
-  //   document.addEventListener("keydown", (e)=> {
-  //     for (let i = 0; i < arrKeyboardKey.length; i++) {
-  //       if (arrKeyboardKey[i].id == e.code) {
-  //         arrKeyboardKey[i].style.background = "#ffdcc8";
-  //         arrKeyboardKey[i].style.transform = "5s";
-  //         if (arrKeyboardKey[i].className == "keyboard-key") {
-  //           if (arrKeyboardKey[i].children[0].className == "rus") {
-  //             if (
-  //               arrKeyboardKey[i].children[0].children[0].className == "caseDown"
-  //             ) {
-  //               let newSymbol =
-  //                 arrKeyboardKey[i].children[0].children[0].innerHTML;
-  //               textaria.innerHTML += newSymbol;
-  //               console.log(newSymbol);
-  //             }
-  //             if (arrKeyboardKey[i].children[0].children[2].className == "caps") {
-  //               let newSymbol =
-  //                 arrKeyboardKey[i].children[0].children[2].innerHTML;
-  //               textaria.innerHTML += newSymbol;
-  //               console.log(newSymbol);
-  //             }
-  //           }
-  //           if (arrKeyboardKey[i].children[1].className == "eng") {
-  //             if (
-  //               arrKeyboardKey[i].children[1].children[0].className == "caseDown"
-  //             ) {
-  //               let newSymbol =
-  //                 arrKeyboardKey[i].children[1].children[0].innerHTML;
-  //               textaria.innerHTML += newSymbol;
-  //               console.log(newSymbol);
-  //             }
-  //             if (arrKeyboardKey[i].children[1].children[2].className == "caps") {
-  //               let newSymbol =
-  //                 arrKeyboardKey[i].children[1].children[2].innerHTML;
-  //               textaria.innerHTML += newSymbol;
-  //               console.log(newSymbol);
-  //             }
-  //           }
-  //         }
-  //       }
-  //     }
-
-  //     if (e.code == "CapsLock") {
-  //       for (let i = 0; i < arrEngKeys.length; i++) {
-  //         if (arrEngKeys[i].className == "eng") {
-  //           if (arrEngKeys[i].children[2].className == "caps hidden") {
-  //             arrEngKeys[i].children[2].classList.remove("hidden");
-  //             arrEngKeys[i].children[0].classList.add("hidden");
-  //           } else {
-  //             arrEngKeys[i].children[0].classList.remove("hidden");
-  //             arrEngKeys[i].children[2].classList.add("hidden");
-  //           }
-  //         }
-  //       }
-  //       for (let i = 0; i < arrRusKeys.length; i++) {
-  //         if (arrRusKeys[i].className == "rus") {
-  //           if (arrRusKeys[i].children[2].className == "caps hidden") {
-  //             arrRusKeys[i].children[2].classList.remove("hidden");
-  //             arrRusKeys[i].children[0].classList.add("hidden");
-  //             console.log(e);
-  //           } else {
-  //             arrRusKeys[i].children[0].classList.remove("hidden");
-  //             arrRusKeys[i].children[2].classList.add("hidden");
-  //           }
-  //         }
-  //       }
-  //     }
-  //   });
   // функция убрать анимацию
   document.addEventListener("keyup", function (e) {
     for (let i = 0; i < arrKeyboardKey.length; i++) {
