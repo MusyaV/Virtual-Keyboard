@@ -39,14 +39,37 @@ window.addEventListener("load", () => {
   });
   //   функция для Space
   document.querySelector("#Space").addEventListener("click", () => {
-    textaria.value =
+    textaria.innerHTML =
+      textaria.value.substring(0, textaria.selectionStart) +
+      " " +
+      textaria.value.substring(textaria.selectionEnd, textaria.value.length);
+  });
+  //   функция для Tab
+  document.querySelector("#Tab").addEventListener("click", () => {
+    textaria.innerHTML =
       textaria.value.substring(0, textaria.selectionStart) +
       " " +
       textaria.value.substring(textaria.selectionEnd, textaria.value.length);
   });
   //   функция для CapsLock
   document.querySelector("#CapsLock").addEventListener("click", () => {
-    capsLock()
+    capsLock();
+  });
+  //   функция для стрелка вверх
+  document.querySelector("#ArrowUp").addEventListener("click", () => {
+    textaria.focus();
+  });
+  //   функция для стрелка влево
+  document.querySelector("#ArrowLeft").addEventListener("click", () => {
+    textaria.focus();
+  });
+  //   функция для стрелка вправо
+  document.querySelector("#ArrowRight").addEventListener("click", () => {
+    textaria.focus();
+  });
+  //   функция для стрелка вниз
+  document.querySelector("#ArrowDown").addEventListener("click", () => {
+    textaria.focus();
   });
   //   функция для capslock
   function capsLock() {
@@ -79,7 +102,6 @@ window.addEventListener("load", () => {
     arrKeyboardKey[i].addEventListener("click", (e) => {
       if (arrKeyboardKey[i].className == "keyboard-key") {
         textaria.innerHTML += e.target.innerText;
-        console.log(e);
       }
     });
   }
@@ -127,7 +149,7 @@ window.addEventListener("load", () => {
     }
 
     if (e.code == "CapsLock") {
-        capsLock();
+      capsLock();
     }
   }
   document.addEventListener("keydown", keyDown);
