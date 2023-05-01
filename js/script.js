@@ -37,8 +37,19 @@ window.addEventListener("load", () => {
       "\n" +
       textaria.value.substring(textaria.selectionEnd, textaria.value.length);
   });
+  //   функция для Space
+  document.querySelector("#Space").addEventListener("click", () => {
+    textaria.value =
+      textaria.value.substring(0, textaria.selectionStart) +
+      " " +
+      textaria.value.substring(textaria.selectionEnd, textaria.value.length);
+  });
   //   функция для CapsLock
   document.querySelector("#CapsLock").addEventListener("click", () => {
+    capsLock()
+  });
+  //   функция для capslock
+  function capsLock() {
     for (let i = 0; i < arrEngKeys.length; i++) {
       if (arrEngKeys[i].className == "eng") {
         if (arrEngKeys[i].children[2].className == "caps hidden") {
@@ -62,22 +73,13 @@ window.addEventListener("load", () => {
         }
       }
     }
-  });
+  }
   //   клик на все кнопки
   for (let i = 0; i < arrKeyboardKey.length; i++) {
     arrKeyboardKey[i].addEventListener("click", (e) => {
       if (arrKeyboardKey[i].className == "keyboard-key") {
         textaria.innerHTML += e.target.innerText;
         console.log(e);
-      }
-      if (arrKeyboardKey[i].id == "Space") {
-        textaria.value =
-          textaria.value.substring(0, textaria.selectionStart) +
-          " " +
-          textaria.value.substring(
-            textaria.selectionEnd,
-            textaria.value.length
-          );
       }
     });
   }
@@ -125,29 +127,7 @@ window.addEventListener("load", () => {
     }
 
     if (e.code == "CapsLock") {
-      for (let i = 0; i < arrEngKeys.length; i++) {
-        if (arrEngKeys[i].className == "eng") {
-          if (arrEngKeys[i].children[2].className == "caps hidden") {
-            arrEngKeys[i].children[2].classList.remove("hidden");
-            arrEngKeys[i].children[0].classList.add("hidden");
-          } else {
-            arrEngKeys[i].children[0].classList.remove("hidden");
-            arrEngKeys[i].children[2].classList.add("hidden");
-          }
-        }
-      }
-      for (let i = 0; i < arrRusKeys.length; i++) {
-        if (arrRusKeys[i].className == "rus") {
-          if (arrRusKeys[i].children[2].className == "caps hidden") {
-            arrRusKeys[i].children[2].classList.remove("hidden");
-            arrRusKeys[i].children[0].classList.add("hidden");
-            console.log(e);
-          } else {
-            arrRusKeys[i].children[0].classList.remove("hidden");
-            arrRusKeys[i].children[2].classList.add("hidden");
-          }
-        }
-      }
+        capsLock();
     }
   }
   document.addEventListener("keydown", keyDown);
